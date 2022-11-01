@@ -13,3 +13,5 @@ class NetflixShow(models.Model):
     NetflixId = models.CharField(max_length=10)
     Language = models.CharField(max_length=50)
     Description = models.CharField(max_length=1000)
+    Imdb = models.FloatField()
+    Director = models.CharField(max_length=50)

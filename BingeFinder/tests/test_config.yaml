@@ -1,0 +1,15 @@
+platform:
+  - streaming_service:
+      category_1:
+        endpoint: "https://www.urltoservice1.com/api/version/endpoint.html"
+        referer: "https://www.urltoservice2.com/"
+      category_2:
+        endpoint: "https://www.urltoservice1.com/api/version/endpoint.html"
+        referer: "https://www.urltoservice2.com/"
+user_agent: "something that is sending request"
+db_username: "username"
+db_password: "myauthenticationstringfordb$&123"
+db_host: "hostaddress"
+db_name: "db_name"
+db_port: "port_no"
+db_table_name: "table_name"
