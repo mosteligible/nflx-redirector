@@ -1,4 +1,3 @@
-from curses.ascii import isalpha
 from typing import Dict
 
 import yaml

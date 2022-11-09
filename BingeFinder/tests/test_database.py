@@ -1,31 +1,18 @@
 import unittest
-from datetime import datetime
 
-from Models import ShowDetails
-from utils import TEST_DB
+from shared import TEST_DB, DB_PAYLOAD
 
 
 class TestDatabase(unittest.TestCase):
     def test_addentry(self):
-        db_payload = ShowDetails(
-            Title="movie_title",
-            ReleaseDate=datetime(year=2020, month=10, day=20),
-            Type="movie_type",
-            Rating="movie_rating",
-            Quality="movie_quality",
-            Starring="Tom Cruise",
-            Category="movie_category",
-            Runtime="99 mins",
-            NetflixId="1234567890",
-            Language="English",
-            Description="An elaborate description of movie",
-            Director="Tom Cruise",
-            Imdb=7.5,
-        )
-        self.payload = db_payload.__dict__
-        self.assertTrue(TEST_DB.AddEntry(self.payload))
+        payload = DB_PAYLOAD.__dict__
+        self.assertTrue(TEST_DB.AddEntry(payload))
 
     def test_entry_successful(self):
-        from_db = TEST_DB.RetreiveMovie(netflixid=self.payload["netflixid"])
+        from_db = TEST_DB.RetreiveMovie(netflixid=DB_PAYLOAD.NetflixId)
+        payload = DB_PAYLOAD.__dict__
         for key, value in from_db.items():
-            self.assertEqual(value, self.payload[key])
+            self.assertEqual(value, payload[key])
+
+        result = TEST_DB.DeleteMovie(netflixid=DB_PAYLOAD.NetflixId)
+        self.assertTrue(result)

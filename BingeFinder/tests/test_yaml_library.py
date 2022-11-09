@@ -1,12 +1,12 @@
 import unittest
 
 import yaml
-from utils import TEST_DIR
+from shared import TEST_DIR
 
 
 class TestYaml(unittest.TestCase):
     def test_yaml_config(self):
-        test_config_file = TEST_DIR / "test_yaml_library.yaml"
+        test_config_file = TEST_DIR / "test_config.yaml"
         expected_output = {
             "db_host": "hostaddress",
             "db_name": "db_name",

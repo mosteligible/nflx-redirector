@@ -80,3 +80,18 @@ class Database:
             return False
 
         return row[0]
+    
+    def DeleteMovie(self, netflixid: str) -> bool:
+        deleteQuery = f"delete from `{self.tableName}` where netflixid='{netflixid}'"
+        try:
+            self._cursor.execute(deleteQuery)
+            self._connection.commit()
+            self.logger.info(
+                f"Successfully deleted client with id {netflixid} from {self.tableName}"
+            )
+        except Exception as e:
+            self.logger.error(
+                f"Error retreiving client with id: {netflixid}\n{traceback.format_exc()}"
+            )
+            return False
+        return True
